@@ -2,7 +2,8 @@ import Vue from 'vue'
 import './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import { store } from './store/store'
+import firebase from 'firebase'
 
 import VueApollo from "vue-apollo";
 
@@ -38,9 +39,25 @@ const getHeaders = () => {
   defaultClient: client,
 })
 
-new Vue({
-  router,
-  store,
-  apolloProvider,
-  render: h => h(App)
-}).$mount('#app')
+let app = '';
+
+const config = {
+  apiKey: "AIzaSyC9esMn7nKGVYK0cGYk9KyY0Y_T9a78OxA",
+  authDomain: "authentication-2d44d.firebaseapp.com",
+  databaseURL: "https://authentication-2d44d.firebaseio.com",
+  projectId: "authentication-2d44d",
+  storageBucket: "authentication-2d44d.appspot.com",
+  messagingSenderId: "187523728989"
+};
+firebase.initializeApp(config);
+
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      apolloProvider,
+      render: h => h(App)
+    }).$mount('#app');
+  }
+});
