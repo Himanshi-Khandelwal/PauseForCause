@@ -16,7 +16,7 @@
               </v-btn>
             </v-list-tile-action>
             <v-list-tile-action>
-              <v-btn round small :color="each_task.status" dark v-on:click="confirmDialog = true; dialog_task = each_task"  v-html="each_task.status"></v-btn>
+              <v-btn round small :color="each_task.status" dark v-on:click="confirmDialog = true; dialog_task = each_task, blockchain()"  v-html="each_task.status"></v-btn>
             </v-list-tile-action>
           </v-list-tile>
         </v-list>
@@ -24,7 +24,7 @@
     </v-flex>
 </v-layout>
 <div>
-  <v-btn color="primary" flat @click="blockchain">BlockChain</v-btn>
+  <v-btn color="primary" flat @click="blockchain">Start Payment</v-btn>
   <v-dialog v-model="dialog" width="500">
         <template v-slot:activator="{ on }">
           <v-btn color="red lighten-2" dark v-on="on" >Create Task</v-btn>
@@ -62,7 +62,15 @@
             <v-btn color="primary" flat @click="updateStatus(dialog_task.task_id, dialog_task.status)">Accept</v-btn>
             <v-btn color="primary" flat @click="confirmDialog = false; dialog_task.status = 'open'">Reject</v-btn>
           </v-card-actions>
+          <p>Payment</p>
+          <qr-code
+      text="0xc31F8e6b0ca24eC2fDd42f5c258A3e8C0123D860"
+      size="500"
+      error-level="L">
+  </qr-code>
         </v-card>
+
+
   </v-dialog>
 </div>
 </div>
@@ -107,7 +115,7 @@ const ADD_TRANSACTION = gql`
 
 const GET_TASKS = gql`
   query getTasks {
-    task(where: { comp_id: { _eq: 3 } }) {
+    task(where: { comp_id: { _eq: 12 } }) {
       task_id
       task_name,
       github_link,
@@ -124,7 +132,7 @@ const GET_TASKS = gql`
      $task_name: String!,
      $description: String!,
      $github_link: String!,
-     $amount: Int!,
+     $amount: float8!,
      $comp_id: Int!,
      $ngo_id: Int!
      $status: String!
@@ -174,7 +182,7 @@ const GET_TASKS = gql`
           description: '',
           github_link: '',
           amount: '',
-          comp_id: 3,
+          comp_id: 12,
           ngo_id: 0,
           status: 'open'
 

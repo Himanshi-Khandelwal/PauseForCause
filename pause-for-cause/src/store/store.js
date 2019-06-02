@@ -11,6 +11,7 @@ export const store = new Vuex.Store({
           { icon: 'fas fa-tasks', text: 'My Tasks', route: '/userTasks' },
           { icon: 'fas fa-donate', text: 'NGOs', route: '/ngosList' },
           { icon: 'fas fa-donate', text: 'Transactions', route: '/transaction' },
+          { icon: 'fas fa-donate', text: 'Map', route: '/map' },
         ],
         companyLinks: [
           { icon: 'fas fa-tasks', text: 'All Tasks', route: '/organization' },

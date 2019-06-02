@@ -19,7 +19,7 @@
               <v-btn round small :disabled="checkDisable(each_task)" :color="each_task.status"  v-on:click="dialog = true; dialog_task = each_task" v-html="each_task.status"></v-btn>
             </v-list-tile-action>
             <v-list-tile-action>
-              <v-btn color="currency" round small v-html="'$ ' + each_task.amount"></v-btn>
+              <v-btn color="currency" round small v-html="'MTEST ' + each_task.amount"></v-btn>
             </v-list-tile-action>
           </v-list-tile>
         </v-list>
@@ -54,7 +54,7 @@
 import gql from 'graphql-tag';
 const GET_TASKS = gql`
   query getTasks {
-    task(where: { comp_id: { _eq: 3 } }) {
+    task(where: {}) {
       task_id
       task_name,
       github_link,
@@ -99,7 +99,7 @@ const GET_TASKS = gql`
     },
     methods: {
       checkDisable: function (task) {
-        return ((task.user_id !== this.user_id))
+        //return ((task.user_id !== this.user_id))
           // && task.status !== 'open') || (task.status === 'completed') || (task.status === 'closed'))
       },
       updateStatus: function (taskId, status) {

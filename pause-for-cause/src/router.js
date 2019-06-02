@@ -7,6 +7,7 @@ import UserTasks from './views/UserTasksView.vue'
 import NGOsList from './views/NGOsListView.vue'
 import Transactions from './views/Transactions.vue'
 import NGO from './views/NGOView.vue'
+import Map from './views/map.vue'
 
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
@@ -79,6 +80,14 @@ const router = new Router({
       path: '/ngo',
       name: 'ngo',
       component: NGO,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/map',
+      name: 'map',
+      component: Map,
       meta: {
         requiresAuth: true
       }

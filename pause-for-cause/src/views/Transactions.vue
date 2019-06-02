@@ -6,9 +6,10 @@
     :items="transaction" hide-actions
   >
     <template v-slot:items="props">
-      <td>{{ props.item.from }}</td>
-      <td>{{ props.item.to }}</td>
+      <td>{{ props.item.from_user.name }}</td>
+      <td>{{ props.item.to_user.name }}</td>
       <td>{{ props.item.block_number }}</td>
+      <td>{{ props.item.amount }}</td>
     </template>
   </v-data-table>
 </div>
@@ -18,12 +19,16 @@
 import gql from 'graphql-tag';
 const GET_TRANSACTIONS = gql`
   query getTransaction {
-    transaction(where: { from: { _eq: "0xa204939897257b22eBE0D01078F560dE5E8Caba3" } }) {
-      from,
-      to,
+    transaction(where: {}) {
+      from_user {
+        name
+      },
+      to_user {
+        name
+      }
       block_number,
       amount
-  }
+    }
  }`;
 
   export default {
@@ -34,13 +39,13 @@ const GET_TRANSACTIONS = gql`
         headers: [
          {
            text: 'From',
-           align: 'left',
+           align: 'center',
            sortable: false,
            value: 'from'
          },
-         { text: 'To', value: 'to',sortable: false, sortable: false, align: 'left'},
-         { text: 'Block Number', value: 'block_number', sortable: false, align: 'left'},
-         { text: 'Amount', value: 'amount', sortable: false, align: 'left',}
+         { text: 'To', value: 'to',sortable: false, sortable: false, align: 'center'},
+         { text: 'Block Number', value: 'block_number', sortable: false, align: 'center'},
+         { text: 'Amount', value: 'amount', sortable: false, align: 'center',}
        ],
       }
     },

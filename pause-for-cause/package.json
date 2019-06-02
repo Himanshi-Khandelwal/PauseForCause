@@ -12,6 +12,7 @@
     "apollo-client": "^2.6.0",
     "apollo-link-http": "^1.5.14",
     "core-js": "^2.6.5",
+    "eth-dagger": "0.0.5",
     "eth-decoder": "0.0.1-beta.2",
     "firebase": "^6.1.0",
     "graphql": "^14.3.1",
@@ -19,6 +20,8 @@
     "lodash": "^4.17.11",
     "vue": "^2.6.10",
     "vue-apollo": "^3.0.0-beta.30",
+    "vue-qrcode-component": "^2.1.1",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.3",
     "vuetify": "^1.5.5",
     "vuex": "^3.0.1"

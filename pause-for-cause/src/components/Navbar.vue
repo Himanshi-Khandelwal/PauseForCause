@@ -3,8 +3,8 @@
     <v-toolbar flat app>
       <v-toolbar-side-icon @click="drawer = !drawer" class="grey--text"></v-toolbar-side-icon>
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Pause </span>
-        <span>FOR CAUSE</span>
+        <span class="font-weight-bold red--text">Pause </span>
+        <span class="font-weight-bold blue--text">FOR CAUSE</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>

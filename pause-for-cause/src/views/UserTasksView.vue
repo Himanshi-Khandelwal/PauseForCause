@@ -19,7 +19,7 @@
               <v-btn round :color="each_task.status" v-on:click="dialog = true; dialog_task = each_task" v-html="each_task.status"></v-btn>
             </v-list-tile-action>
             <v-list-tile-action>
-              <v-btn color="currency" round small v-html="'$ ' + each_task.amount"></v-btn>
+              <v-btn color="currency" round small v-html="'MTEST ' + each_task.amount"></v-btn>
             </v-list-tile-action>
           </v-list-tile>
         </v-list>
